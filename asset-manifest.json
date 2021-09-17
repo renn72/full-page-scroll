@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/renn72/full-page-scroll/static/css/main.67fe2aac.chunk.css",
+    "main.js": "/renn72/full-page-scroll/static/js/main.c2f8fe1a.chunk.js",
+    "main.js.map": "/renn72/full-page-scroll/static/js/main.c2f8fe1a.chunk.js.map",
+    "runtime-main.js": "/renn72/full-page-scroll/static/js/runtime-main.083b9052.js",
+    "runtime-main.js.map": "/renn72/full-page-scroll/static/js/runtime-main.083b9052.js.map",
+    "static/js/2.8489fbc7.chunk.js": "/renn72/full-page-scroll/static/js/2.8489fbc7.chunk.js",
+    "static/js/2.8489fbc7.chunk.js.map": "/renn72/full-page-scroll/static/js/2.8489fbc7.chunk.js.map",
+    "static/js/3.221067a2.chunk.js": "/renn72/full-page-scroll/static/js/3.221067a2.chunk.js",
+    "static/js/3.221067a2.chunk.js.map": "/renn72/full-page-scroll/static/js/3.221067a2.chunk.js.map",
+    "index.html": "/renn72/full-page-scroll/index.html",
+    "static/css/main.67fe2aac.chunk.css.map": "/renn72/full-page-scroll/static/css/main.67fe2aac.chunk.css.map",
+    "static/js/2.8489fbc7.chunk.js.LICENSE.txt": "/renn72/full-page-scroll/static/js/2.8489fbc7.chunk.js.LICENSE.txt",
+    "static/media/App.scss": "/renn72/full-page-scroll/static/media/3.53bde113.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.083b9052.js",
+    "static/js/2.8489fbc7.chunk.js",
+    "static/css/main.67fe2aac.chunk.css",
+    "static/js/main.c2f8fe1a.chunk.js"
+  ]
+}
