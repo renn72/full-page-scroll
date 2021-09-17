@@ -6,9 +6,9 @@
 }
 
 // ------------- VARIABLES ------------- //
-$parallax-offset: 30vh;
-$content-offset: 40vh;
-$transition-speed: 1.2s;
+$parallax-offset: 20vh;
+$content-offset: 60vh;
+$transition-speed: 1.3s;
 $slide-number: 3;
 
 html,
@@ -44,17 +44,17 @@ body {
     background-color: rgba(0, 0, 0, 0.3);
   }
   &:first-child {
-    background-image: url(https://i.postimg.cc/kXq9Qmnj/bgd1.jpg);
+    background-image: url(./images/1.jpg);
     transform: translateY(-$parallax-offset / 2);
     .content-wrapper {
       transform: translateY($parallax-offset / 2);
     }
   }
   &:nth-child(2) {
-    background-image: url(https://i.postimg.cc/W14vywqg/photo-1424746219973-8fe3bd07d8e3.jpg);
+    background-image: url(./images/2.jpg);
   }
   &:nth-child(3) {
-    background-image: url(https://i.postimg.cc/TY0xQ41T/photo-1433840496881-cbd845929862.jpg);
+    background-image: url(./images/3.jpg);
   }
 }
 

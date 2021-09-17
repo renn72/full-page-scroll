@@ -1,17 +1,22 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
 import './App.scss'
 
-const useScrollListener = (element, handleScroll, throttle = 1000) => {
-  const scrollingTimer = useRef()
+const useScrollListener = (
+  element,
+  handleScroll,
+  eventType = 'wheel',
+  throttle = 600
+) => {
+  // const scrollingTimer = useRef()
+  const [isScrolling, setIsScrolling] = useState(false)
+
   const listenToScroll = useCallback(
     (e) => {
-      element.current?.removeEventListener('wheel', listenToScroll) // unregister the event
-      clearTimeout(scrollingTimer.current) // clear previous timeout instance
-      scrollingTimer.current = setTimeout(
-        () => element.current?.addEventListener('wheel', listenToScroll), // re-register the event after a certain time
-        throttle
-      )
-      handleScroll(e) // call the handler logic (this is async and will not wait for the setTimeout to run!)
+      if (!isScrolling) {
+        handleScroll(e) // call the handler logic (this is async and will not wait for the setTimeout to run!)
+        setIsScrolling(true)
+        setTimeout(() => setIsScrolling(false), throttle)
+      }
     },
     [throttle, element, handleScroll]
   )
@@ -19,13 +24,13 @@ const useScrollListener = (element, handleScroll, throttle = 1000) => {
   useEffect(() => {
     const currentElement = element.current
     if (currentElement) {
-      currentElement.addEventListener('wheel', listenToScroll)
+      currentElement.addEventListener(eventType, listenToScroll)
     }
     return () => {
-      currentElement?.removeEventListener('wheel', listenToScroll)
-      clearTimeout(scrollingTimer.current)
+      currentElement?.removeEventListener(eventType, listenToScroll)
+      // clearTimeout(scrollingTimer.current)
     }
-  }, [listenToScroll, element])
+  }, [listenToScroll, element, eventType])
 }
 
 function App() {
@@ -50,20 +55,18 @@ function App() {
   const handleScroll = (e) => {
     console.log('scroll')
     console.log(e)
-    console.log('callback ' + currentSlide)
     if (e.wheelDelta < 0) {
       if (currentSlide < totalSlideNumber - 1) {
         console.log('down')
-        setCurrentSlide(currentSlide + 1)
+        setCurrentSlide((c) => c + 1)
       }
     } else {
       if (currentSlide > 0) {
         console.log('up')
-        setCurrentSlide(currentSlide - 1)
+        setCurrentSlide((c) => c - 1)
       }
     }
   }
-
   useScrollListener(containerRef, handleScroll)
 
   return (
@@ -74,7 +77,7 @@ function App() {
         }
       >
         <div className='content-wrapper'>
-          <p className='content-title'>Full Page Parallax Effect</p>
+          <p className='content-title'>I'm a hipster cafe</p>
           <p className='content-subtitle'>
             Scroll down and up to see the effect!
           </p>
@@ -86,11 +89,8 @@ function App() {
         }
       >
         <div className='content-wrapper'>
-          <p className='content-title'>Cras lacinia non eros nec semper.</p>
-          <p className='content-subtitle'>
-            Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-            per inceptos himenaeos. Cras ut massa mattis nibh semper pretium.
-          </p>
+          <p className='content-title'>I also do catering</p>
+          <p className='content-subtitle'>yummy, yummy</p>
         </div>
       </section>
       <section
@@ -99,11 +99,8 @@ function App() {
         }
       >
         <div className='content-wrapper'>
-          <p className='content-title'>Etiam consequat lectus.</p>
-          <p className='content-subtitle'>
-            Nullam tristique urna sed tellus ornare congue. Etiam vitae erat at
-            nibh aliquam dapibus.
-          </p>
+          <p className='content-title'>come and give me your money</p>
+          <p className='content-subtitle'>please, I am desperate</p>
         </div>
       </section>
     </div>
