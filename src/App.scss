@@ -7,18 +7,18 @@
 
 // ------------- VARIABLES ------------- //
 $parallax-offset: 20vh;
-$content-offset: 60vh;
+$content-offset: 40vh;
 $transition-speed: 1.3s;
 $slide-number: 3;
 
-html,
-body {
-  overflow: hidden;
-}
+// html,
+// body {
+//   overflow: hidden;
+// }
 
-.container {
-  overflow: scroll;
-}
+// .container {
+//   overflow: scroll;
+// }
 
 .background {
   background-size: cover;

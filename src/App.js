@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
+import { useSwipeable } from 'react-swipeable'
 import './App.scss'
 
 const useScrollListener = (
@@ -18,17 +19,16 @@ const useScrollListener = (
         setTimeout(() => setIsScrolling(false), throttle)
       }
     },
-    [throttle, element, handleScroll]
+    [throttle, handleScroll, isScrolling]
   )
 
   useEffect(() => {
     const currentElement = element.current
     if (currentElement) {
-      currentElement.addEventListener(eventType, listenToScroll)
+      window.addEventListener(eventType, listenToScroll, false)
     }
     return () => {
-      currentElement?.removeEventListener(eventType, listenToScroll)
-      // clearTimeout(scrollingTimer.current)
+      window?.removeEventListener(eventType, listenToScroll)
     }
   }, [listenToScroll, element, eventType])
 }
@@ -43,14 +43,6 @@ function App() {
   const totalSlideNumber = 3
 
   console.log('main loop ' + currentSlide)
-
-  // const scrollUp = () => {
-  //   if (currentSlide < totalSlideNumber) {
-  //     console.log('callback ' + currentSlide)
-  //     console.log('down')
-  //     setCurrentSlide((c) => c + 1)
-  //   }
-  // }
 
   const handleScroll = (e) => {
     console.log('scroll')
@@ -67,10 +59,49 @@ function App() {
       }
     }
   }
-  useScrollListener(containerRef, handleScroll)
+
+  const handleKeyPress = (e) => {
+    const { key } = e
+    if (key === 'ArrowDown' || key === 'PageDown') {
+      if (currentSlide < totalSlideNumber - 1) {
+        console.log('down')
+        setCurrentSlide((c) => c + 1)
+      }
+    } else if (key === 'ArrowUp' || key === 'PageUp') {
+      if (currentSlide > 0) {
+        console.log('up')
+        setCurrentSlide((c) => c - 1)
+      }
+    }
+  }
+
+  const handleSwipe = (e) => {
+    const { dir } = e
+
+    if (dir === 'Down') {
+      if (currentSlide < totalSlideNumber - 1) {
+        console.log('down')
+        setCurrentSlide((c) => c + 1)
+      }
+    } else if (dir === 'Up') {
+      if (currentSlide > 0) {
+        console.log('up')
+        setCurrentSlide((c) => c - 1)
+      }
+    }
+  }
+
+  const swipeHandler = useSwipeable({
+    onSwiped: handleSwipe,
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true,
+  })
+
+  useScrollListener(containerRef, handleScroll, 'wheel')
+  useScrollListener(containerRef, handleKeyPress, 'keydown')
 
   return (
-    <div ref={containerRef} className='container'>
+    <div {...swipeHandler} ref={containerRef} className='container'>
       <section
         className={
           currentSlide === 0 ? 'background up-scroll' : 'background down-scroll'
