@@ -78,12 +78,12 @@ function App() {
   const handleSwipe = (e) => {
     const { dir } = e
 
-    if (dir === 'Down') {
+    if (dir === 'Up') {
       if (currentSlide < totalSlideNumber - 1) {
         console.log('down')
         setCurrentSlide((c) => c + 1)
       }
-    } else if (dir === 'Up') {
+    } else if (dir === 'Down') {
       if (currentSlide > 0) {
         console.log('up')
         setCurrentSlide((c) => c - 1)
@@ -94,6 +94,7 @@ function App() {
   const swipeHandler = useSwipeable({
     onSwiped: handleSwipe,
     preventDefaultTouchmoveEvent: true,
+    trackTouch: true,
     trackMouse: true,
   })
 
@@ -101,39 +102,47 @@ function App() {
   useScrollListener(containerRef, handleKeyPress, 'keydown')
 
   return (
-    <div {...swipeHandler} ref={containerRef} className='container'>
-      <section
-        className={
-          currentSlide === 0 ? 'background up-scroll' : 'background down-scroll'
-        }
-      >
-        <div className='content-wrapper'>
-          <p className='content-title'>I'm a hipster cafe</p>
-          <p className='content-subtitle'>
-            Scroll down and up to see the effect!
-          </p>
-        </div>
-      </section>
-      <section
-        className={
-          currentSlide === 1 ? 'background up-scroll' : 'background down-scroll'
-        }
-      >
-        <div className='content-wrapper'>
-          <p className='content-title'>I also do catering</p>
-          <p className='content-subtitle'>yummy, yummy</p>
-        </div>
-      </section>
-      <section
-        className={
-          currentSlide === 2 ? 'background up-scroll' : 'background down-scroll'
-        }
-      >
-        <div className='content-wrapper'>
-          <p className='content-title'>come and give me your money</p>
-          <p className='content-subtitle'>please, I am desperate</p>
-        </div>
-      </section>
+    <div {...swipeHandler}>
+      <div ref={containerRef} className='container'>
+        <section
+          className={
+            currentSlide === 0
+              ? 'background up-scroll'
+              : 'background down-scroll'
+          }
+        >
+          <div className='content-wrapper'>
+            <p className='content-title'>I'm a hipster cafe</p>
+            <p className='content-subtitle'>
+              Scroll down and up to see the effect!
+            </p>
+          </div>
+        </section>
+        <section
+          className={
+            currentSlide === 1
+              ? 'background up-scroll'
+              : 'background down-scroll'
+          }
+        >
+          <div className='content-wrapper'>
+            <p className='content-title'>I also do catering.</p>
+            <p className='content-subtitle'>yummy, yummy</p>
+          </div>
+        </section>
+        <section
+          className={
+            currentSlide === 2
+              ? 'background up-scroll'
+              : 'background down-scroll'
+          }
+        >
+          <div className='content-wrapper'>
+            <p className='content-title'>give me your money</p>
+            <p className='content-subtitle'>please, I am desperate</p>
+          </div>
+        </section>
+      </div>
     </div>
   )
 }
