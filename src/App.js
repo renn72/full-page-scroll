@@ -127,7 +127,7 @@ function App() {
         >
           <div className='content-wrapper'>
             <p className='content-title'>I also do catering.</p>
-            <p className='content-subtitle'>yummy, yummy</p>
+            <p className='content-subtitle'>yummy, yummy!</p>
           </div>
         </section>
         <section
