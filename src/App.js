@@ -139,7 +139,7 @@ function App() {
         >
           <div className='content-wrapper'>
             <p className='content-title'>give me your money</p>
-            <p className='content-subtitle'>please, I am desperate</p>
+            <p className='content-subtitle'>please, I am desperate!</p>
           </div>
         </section>
       </div>
