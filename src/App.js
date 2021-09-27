@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
 import { useSwipeable } from 'react-swipeable'
 import './App.scss'
+import ScrollIndicator from './components/ScrollIndicator'
 
 const useScrollListener = (
   element,
@@ -42,19 +43,13 @@ function App() {
 
   const totalSlideNumber = 3
 
-  console.log('main loop ' + currentSlide)
-
   const handleScroll = (e) => {
-    console.log('scroll')
-    console.log(e)
     if (e.wheelDelta < 0) {
       if (currentSlide < totalSlideNumber - 1) {
-        console.log('down')
         setCurrentSlide((c) => c + 1)
       }
     } else {
       if (currentSlide > 0) {
-        console.log('up')
         setCurrentSlide((c) => c - 1)
       }
     }
@@ -64,12 +59,10 @@ function App() {
     const { key } = e
     if (key === 'ArrowDown' || key === 'PageDown') {
       if (currentSlide < totalSlideNumber - 1) {
-        console.log('down')
         setCurrentSlide((c) => c + 1)
       }
     } else if (key === 'ArrowUp' || key === 'PageUp') {
       if (currentSlide > 0) {
-        console.log('up')
         setCurrentSlide((c) => c - 1)
       }
     }
@@ -80,12 +73,10 @@ function App() {
 
     if (dir === 'Up') {
       if (currentSlide < totalSlideNumber - 1) {
-        console.log('down')
         setCurrentSlide((c) => c + 1)
       }
     } else if (dir === 'Down') {
       if (currentSlide > 0) {
-        console.log('up')
         setCurrentSlide((c) => c - 1)
       }
     }
@@ -143,6 +134,7 @@ function App() {
           </div>
         </section>
       </div>
+      <ScrollIndicator currentSlide={currentSlide} />
     </div>
   )
 }
