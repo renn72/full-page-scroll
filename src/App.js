@@ -1,7 +1,11 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
+import { gsap } from 'gsap'
+import { Power3 } from 'gsap/gsap-core'
 import { useSwipeable } from 'react-swipeable'
 import './App.scss'
 import ScrollIndicator from './components/ScrollIndicator'
+import { ReactComponent as Left } from './assets/left.svg'
+import { ReactComponent as Right } from './assets/right.svg'
 
 const useScrollListener = (
   element,
@@ -42,6 +46,31 @@ function App() {
   const containerRef = useRef(null)
 
   const totalSlideNumber = 3
+
+  useEffect(() => {
+    gsap.from(
+      '.shop-title',
+      {
+        opacity: 0,
+        x: 400,
+        ease: Power3.easeOut,
+        duration: 2.1,
+        lazy: false,
+        stagger: {
+          amount: 0.4,
+        },
+      }
+      // {
+      //   opacity: 1,
+      //   x: 0,
+      //   ease: Power3.easeOut,
+      //   duration: 3.8,
+      //   stagger: {
+      //     amount: 0.8,
+      //   },
+      // }
+    )
+  }, [])
 
   const handleScroll = (e) => {
     if (e.wheelDelta < 0) {
@@ -93,46 +122,58 @@ function App() {
   useScrollListener(containerRef, handleKeyPress, 'keydown')
 
   return (
-    <div {...swipeHandler}>
-      <div ref={containerRef} className='container'>
-        <section
-          className={
-            currentSlide === 0
-              ? 'background up-scroll'
-              : 'background down-scroll'
-          }
-        >
-          <div className='content-wrapper'>
-            <p className='content-title'>I'm a hipster cafe</p>
-            <p className='content-subtitle'>
-              Scroll down and up to see the effect!
-            </p>
-          </div>
-        </section>
-        <section
-          className={
-            currentSlide === 1
-              ? 'background up-scroll'
-              : 'background down-scroll'
-          }
-        >
-          <div className='content-wrapper'>
-            <p className='content-title'>I also do catering.</p>
-            <p className='content-subtitle'>yummy, yummy!</p>
-          </div>
-        </section>
-        <section
-          className={
-            currentSlide === 2
-              ? 'background up-scroll'
-              : 'background down-scroll'
-          }
-        >
-          <div className='content-wrapper'>
-            <p className='content-title'>give me your money</p>
-            <p className='content-subtitle'>please, I am desperate!</p>
-          </div>
-        </section>
+    <div>
+      <div {...swipeHandler}>
+        <div ref={containerRef} className='container'>
+          <section
+            className={
+              currentSlide === 0
+                ? 'background up-scroll'
+                : 'background down-scroll'
+            }
+          >
+            <div className='content-wrapper'>
+              {/* <div className='splash-wrapper'> */}
+              <p className='content-title shop-title'>Poacher</p>
+              <p className='content-title shop-title'>&</p>
+              <p className='content-title shop-title'>Hound</p>
+              {/* </div> */}
+              <p className='content-subtitle'>
+                Scroll down and up to see the effect!
+              </p>
+            </div>
+          </section>
+          <section
+            className={
+              currentSlide === 1
+                ? 'background up-scroll'
+                : 'background down-scroll'
+            }
+          >
+            <div className='content-wrapper'>
+              <div className='events-wrapper'>
+                <Left height='6vh' />
+                <div className='block'>
+                  <p className='content-title'>I also do catering.</p>
+                  <p className='content-subtitle'>yummy, yummy!</p>
+                </div>
+                <Right height='6vh' />
+              </div>
+            </div>
+          </section>
+          <section
+            className={
+              currentSlide === 2
+                ? 'background up-scroll'
+                : 'background down-scroll'
+            }
+          >
+            <div className='content-wrapper'>
+              <p className='content-title'>give me your money</p>
+              <p className='content-subtitle'>please, I am desperate!</p>
+            </div>
+          </section>
+        </div>
       </div>
       <ScrollIndicator currentSlide={currentSlide} />
     </div>

@@ -6,14 +6,15 @@ import { Power3 } from 'gsap/gsap-core'
 const CircleContainer = styled.div`
   position: absolute;
   z-index: 10;
-  height: 99vh;
-  width: 99vw;
+  height: 98vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
   gap: 1rem;
   overflow: hidden;
+  pointer-events: none;
 `
 
 const Circle = styled.div`
@@ -23,6 +24,7 @@ const Circle = styled.div`
   border-radius: 100%;
   background-color: #51a0fd;
   align-items: center;
+  margin-right: 1rem;
 `
 
 export default function ScrollIndicator({ currentSlide }) {

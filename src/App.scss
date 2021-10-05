@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Montserrat);
+@import url(https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&display=swap);
 
 // ------------- MIXINS ------------- //
 @mixin transition($time, $property: all, $easing: ease-in) {
@@ -41,7 +41,7 @@ $slide-number: 3;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.01);
   }
   &:first-child {
     background-image: url(./images/1.jpg);
@@ -68,6 +68,12 @@ $slide-number: 3;
   }
 }
 
+.splash-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .content {
   &-wrapper {
     height: 100vh;
@@ -75,8 +81,8 @@ $slide-number: 3;
     justify-content: center;
     text-align: center;
     flex-flow: column nowrap;
-    color: #fff;
-    font-family: Montserrat;
+    color: #dededc;
+    font-family: Arvo;
     text-transform: uppercase;
     transform: translateY($content-offset);
     will-change: transform;
@@ -90,7 +96,16 @@ $slide-number: 3;
   &-title {
     font-size: 10vh;
     line-height: 1.4;
+    margin: 0;
+    opacity: 1;
   }
+}
+
+.events-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+  text-align: center;
 }
 
 // ------------- SET TRANSFORM VALUES ------------- //
