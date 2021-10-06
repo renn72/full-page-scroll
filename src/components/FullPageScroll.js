@@ -13,31 +13,6 @@ export default function FullPageScroll({
 
   const totalSlideNumber = children.length
 
-  // useEffect(() => {
-  //   gsap.from(
-  //     '.shop-title',
-  //     {
-  //       opacity: 0,
-  //       x: 400,
-  //       ease: Power3.easeOut,
-  //       duration: 2.1,
-  //       lazy: false,
-  //       stagger: {
-  //         amount: 0.4,
-  //       },
-  //     }
-  //     // {
-  //     //   opacity: 1,
-  //     //   x: 0,
-  //     //   ease: Power3.easeOut,
-  //     //   duration: 3.8,
-  //     //   stagger: {
-  //     //     amount: 0.8,
-  //     //   },
-  //     // }
-  //   )
-  // }, [])
-
   const handleScroll = (e) => {
     if (e.wheelDelta < 0) {
       if (currentSlide < totalSlideNumber - 1) {

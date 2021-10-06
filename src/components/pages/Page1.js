@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import gsap from 'gsap'
 import { Power3 } from 'gsap/gsap-core'
 
+import background from '../../images/1.jpg'
+
 export default function Page1({ className }) {
   useEffect(() => {
     gsap.from('.shop-title-1', {
@@ -26,7 +28,10 @@ export default function Page1({ className }) {
   }, [])
 
   return (
-    <section className={className}>
+    <section
+      className={className}
+      style={{ backgroundImage: `url(${background})` }}
+    >
       <div className='content-wrapper'>
         <p className='content-title shop-title shop-title-1'>Poacher</p>
         <p className='content-title shop-title shop-title-2'>&</p>

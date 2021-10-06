@@ -6,19 +6,10 @@
 }
 
 // ------------- VARIABLES ------------- //
-$parallax-offset: 60vh;
+$parallax-offset: 30vh;
 $content-offset: 40vh;
 $transition-speed: 1.3s;
 $slide-number: 3;
-
-// html,
-// body {
-//   overflow: hidden;
-// }
-
-// .container {
-//   overflow: scroll;
-// }
 
 .background {
   background-size: cover;
@@ -44,20 +35,15 @@ $slide-number: 3;
     background-color: rgba(0, 0, 0, 0.01);
   }
   &:first-child {
-    background-image: url(./images/1.jpg);
+    // background-image: url(./images/1.jpg);
     transform: translateY(-$parallax-offset / 2);
-    // z-index: 3;
     .content-wrapper {
       transform: translateY($parallax-offset / 2);
     }
   }
-  &:nth-child(2) {
-    background-image: url(./images/2.jpg);
-    // z-index: 2;
-  }
+
   &:nth-child(3) {
     background-image: url(./images/3.jpg);
-    // z-index: 1;
   }
 }
 
@@ -94,7 +80,7 @@ $slide-number: 3;
     );
   }
   &-title {
-    font-size: 10vh;
+    font-size: 9vh;
     line-height: 1.4;
     margin: 0;
     opacity: 1;

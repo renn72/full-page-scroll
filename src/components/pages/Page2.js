@@ -1,11 +1,16 @@
 import React from 'react'
 
+import background from '../../images/2.jpg'
+
 import { ReactComponent as Left } from '../../assets/left.svg'
 import { ReactComponent as Right } from '../../assets/right.svg'
 
 export default function Page2({ className }) {
   return (
-    <section className={className}>
+    <section
+      className={className}
+      style={{ backgroundImage: `url(${background})` }}
+    >
       <div className='content-wrapper'>
         <div className='events-wrapper'>
           <Left height='6vh' />

@@ -36,8 +36,8 @@ export default function ScrollIndicator({ currentSlide }) {
     })
 
     gsap.to(`.${slide}`, {
-      width: '0.7rem',
-      height: '0.7rem',
+      width: '1rem',
+      height: '1rem',
       duration: 0.4,
     })
   }
