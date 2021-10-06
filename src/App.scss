@@ -41,10 +41,6 @@ $slide-number: 3;
       transform: translateY($parallax-offset / 2);
     }
   }
-
-  &:nth-child(3) {
-    background-image: url(./images/3.jpg);
-  }
 }
 
 /* Set stacking context of slides */

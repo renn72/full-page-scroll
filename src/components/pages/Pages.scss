@@ -1,0 +1,27 @@
+@import '../../App.scss';
+
+.page-3-wrapper {
+  display: grid;
+  grid-template-columns: 1fr, 1fr;
+  height: 100vh;
+  text-align: center;
+  color: #dededc;
+  font-family: Arvo;
+  text-transform: uppercase;
+  transform: translateY($parallax-offset/2);
+  will-change: transform;
+  backface-visibility: hidden;
+  @include transition(
+    $transition-speed + 0.5,
+    all,
+    cubic-bezier(0.22, 0.44, 0, 1)
+  );
+}
+
+.page-3-contact-wrapper {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
