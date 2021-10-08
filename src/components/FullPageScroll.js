@@ -1,8 +1,9 @@
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { useSwipeable } from 'react-swipeable'
 import '../App.scss'
 import ScrollIndicator from './ScrollIndicator'
 import useScrollListener from '../hooks/useScrollListener'
+import gsap from 'gsap'
 
 export default function FullPageScroll({
   children,
@@ -61,6 +62,12 @@ export default function FullPageScroll({
 
   useScrollListener(containerRef, handleScroll, 'wheel')
   useScrollListener(containerRef, handleKeyPress, 'keydown')
+
+  useEffect(() => {
+    gsap.from('.container', {
+      autoAlpha: 0,
+    })
+  }, [])
 
   return (
     <div>

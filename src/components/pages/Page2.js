@@ -1,6 +1,6 @@
 import React from 'react'
 
-import background from '../../images/2.jpg'
+import background from '../../images/2-1.webp'
 
 import { ReactComponent as Left } from '../../assets/left.svg'
 import { ReactComponent as Right } from '../../assets/right.svg'

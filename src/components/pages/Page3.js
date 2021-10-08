@@ -1,7 +1,7 @@
 import React from 'react'
 import './Pages.scss'
 
-import background from '../../images/3.jpg'
+import background from '../../images/3-1.webp'
 
 export default function Page3({ className }) {
   return (

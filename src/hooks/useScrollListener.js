@@ -22,7 +22,9 @@ export default function useScrollListener(
   useEffect(() => {
     const currentElement = element.current
     if (currentElement) {
-      window.addEventListener(eventType, listenToScroll, false)
+      window.addEventListener(eventType, listenToScroll, false, {
+        passive: true,
+      })
     }
     return () => {
       window?.removeEventListener(eventType, listenToScroll)

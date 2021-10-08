@@ -11,6 +11,15 @@ $content-offset: 40vh;
 $transition-speed: 1.3s;
 $slide-number: 3;
 
+.app {
+  background-color: #000;
+}
+
+.container {
+  visibility: hidden;
+  background-color: #000;
+}
+
 .background {
   background-size: cover;
   background-repeat: no-repeat;
