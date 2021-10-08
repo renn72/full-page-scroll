@@ -9,7 +9,7 @@ function App() {
   const [currentSlide, setCurrentSlide] = useState(0)
 
   return (
-    <div>
+    <div className='app'>
       <FullPageScroll
         currentSlide={currentSlide}
         setCurrentSlide={setCurrentSlide}
